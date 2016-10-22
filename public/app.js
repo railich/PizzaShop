@@ -1,6 +1,13 @@
-var x = 1;
+
 
 function something() {
+    const COUNTER = 'counter';
+    var counter = 1;
 
-    alert('Hello everyone!');
+    if(!!localStorage.getItem(COUNTER)) {
+        counter = localStorage.getItem(COUNTER);
+    }
+
+    localStorage.setItem(COUNTER,  ++counter);
+    alert(counter);
 }
