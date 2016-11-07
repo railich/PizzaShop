@@ -1,2 +1,26 @@
 <h1>Welcome to Pizza Shop</h1>
+
+<div class="row">
+  <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="item-title"><%= product.title %></div>
+        <div class="item-img">
+          <img src="<%= product.path_to_image%>" width="80%">
+          <% if product.is_best_offer %>
+          <span class="item-best-offer">Хит продаж!</span>
+          <% end %>
+          <% if product.is_veg %>
+          <span class="item-best-offer">Вегетарианская</span>
+          <% end %>
+        </div>
+        <div class="item-desc"><%= product.description %></div>
+        <div class="item-size">Размер: <span><%= product.size %> см</span></div>
+        <div class="item-price">Цена: <span><%= product.price %></span> руб.</div>
+        <div>
+          <button class="btn btn-sm btn-success" onclick="add_to_cart(<%= product.id %>);">Добавить в корзину</button>
+        </div>
+
+      </div>
+  <% end %>
+</div>
 <button class="btn btn-primary" onclick="something()">Click me!</button>
