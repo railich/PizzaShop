@@ -1,5 +1,3 @@
-
-
 function something() {
     const COUNTER = 'counter';
     var counter = 1;
@@ -18,4 +16,18 @@ function add_to_cart(id) {
 
     x = x * 1 + 1;
     window.localStorage.setItem(key, x);
+}
+
+function cart_get_number_of_items() {
+    var itemCount = 0;
+
+    for(var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+
+        if(key.indexOf('product_') == 0) {
+            itemCount += localStorage.getItem(key) * 1;
+        }
+    }
+
+    return itemCount;
 }
