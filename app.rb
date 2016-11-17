@@ -21,8 +21,16 @@ end
 
 post '/cart' do
   orders_input = params[:orders]
-  @orders = parse_orders_input orders_input
-  erb "Hello #{ @orders.inspect }"
+  orders = parse_orders_input orders_input
+  @items = []
+  orders.each do |item|
+    product = Product.find(item[0])
+    count = item[1]
+
+    @items.push(product: product, qty: count)
+  end
+
+  erb :cart
 end
 
 
